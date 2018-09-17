@@ -6,10 +6,11 @@
 ### Discription
 My second project for hexlet.io.
 
-### Instalation
+### Instalation and help
 Before installing, make sure you have npm and node.js installed.
 ```
 npm i -g gen-diff-echo
+gen-diff -h
 ```
 This will install package globaly
-[![asciicast](https://asciinema.org/a/Jg6DolQMqrP6LyGL9kesrJ36t.png)](https://asciinema.org/a/Jg6DolQMqrP6LyGL9kesrJ36t)
+[![asciicast](https://asciinema.org/a/IRUsV8Ir1ZpPmGfaJMS1DI6xy.png)](https://asciinema.org/a/IRUsV8Ir1ZpPmGfaJMS1DI6xy)
