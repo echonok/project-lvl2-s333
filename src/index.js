@@ -1,5 +1,5 @@
 import test from 'commander';
 
-export run () => {
+export default () => {
 	console.log("Hi!");
 };
