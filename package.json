@@ -1,6 +1,6 @@
 {
   "name": "gen-diff-echo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The secont Hexlet's project",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,6 @@
     "eslint": "eslint",
     "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
-
   },
   "repository": {
     "type": "git",
