@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import mainMenu from '../games/mainMenu';
+import run from '../index';
 
-mainMenu();
+run();
