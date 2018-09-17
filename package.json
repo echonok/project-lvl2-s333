@@ -18,6 +18,9 @@
   "keywords": [
     "Hexlet"
   ],
+  "bin": {
+    "gen-diff": "dist/bin/gen-diff.js"
+  },
   "author": "Nick Elovsky",
   "license": "ISC",
   "bugs": {
