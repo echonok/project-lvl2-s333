@@ -2,9 +2,10 @@ import program from 'commander';
 
 export default () => {
   program
-    .desciption('Compares two configuration files and shows a difference.')
+    .version('0.0.7')
+    .description('Compares two configuration files and shows a difference.')
+    .arguments('<firstArgument> <secondArgument>')
     .option('-h, --help', 'output usage information')
-    .option('-V, --version', 'output the version number')
     .option('-f, --format [type]', 'output format')
-    .arguments('arguments');
+    .action(() => console.log('test message from commander.js'));
 };
