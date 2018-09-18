@@ -43,7 +43,7 @@ const complexArrayToSimpleArray = (someArray) => {
 const arrayToString = (someArray) => {
   let someString = '{';
   someArray.forEach((item) => {
-    someString += `\n\t${item.changes} ${item.name}: ${item.value}`;
+    someString += `\n  ${item.changes} ${item.name}: ${item.value}`;
   });
   someString += '\n}';
   return someString;
