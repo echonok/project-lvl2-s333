@@ -20,7 +20,7 @@ const compareValues = (value1, value2) => {
     return {
       changes: ' ',
       value: value1,
-    ;
+    };
   } 
   if (value1 === undefined) {
     return {
