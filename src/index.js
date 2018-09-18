@@ -61,6 +61,4 @@ const genDiff = (path1, path2) => {
   arrayToString(complexArrayToSimpleArray(result));
 };
 
-genDiff(fileBefore, fileAfter);
-
 export default genDiff;

@@ -1,10 +1,10 @@
 import genDiff from '../src';
 
 test('gen-diff', () => {
-  const config1 = '__tests__/__fixtures__/after.json';
-  const config2 = '__tests__/__fixtures__/before.json';
+  const file1 = '__tests__/__fixtures__/after.json';
+  const file2 = '__tests__/__fixtures__/before.json';
 
-  const actual = genDiff(config1, config2);
+  const actual = genDiff(file1, file2);
 
   const expected = `{
     - follow: false
