@@ -61,9 +61,6 @@ const genDiff = (path1, path2) => {
   arrayToString(complexArrayToSimpleArray(result));
 };
 
-const fileBefore = '__tests__/__fixtures__/before.json';
-const fileAfter = '__tests__/__fixtures__/after.json';
-
 genDiff(fileBefore, fileAfter);
 
 export default genDiff;
