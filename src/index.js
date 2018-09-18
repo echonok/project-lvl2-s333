@@ -42,9 +42,10 @@ const complexArrayToSimpleArray = (someArray) => {
 const arrayToString = (someArray) => {
   console.log('{');
   someArray.forEach((item) => {
-    console.log(`  ${item.changes} ${item.name}: ${item.value}`);
+    someString = `  ${item.changes} ${item.name}: ${item.value} \n`;
   });
   console.log('}');
+  return someString;
 };
 
 const genDiff = (path1, path2) => {
