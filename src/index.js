@@ -41,7 +41,7 @@ const complexArrayToSimpleArray = (someArray) => {
 
 const arrayToString = (someArray) => {
   console.log('{');
-  someArray.forEach(function (item) {
+  someArray.forEach((item) => {
     console.log(`  ${item.changes} ${item.name}: ${item.value}`);
   });
   console.log('}');
