@@ -36,7 +36,6 @@ const complexArrayToSimpleArray = (someArray) => {
     }
     return acc;
   }, []);
-  console.log(finalArray);
   return finalArray;
 };
 
