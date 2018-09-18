@@ -10,13 +10,13 @@ const compareValues = (value1, value2) => {
   }
   if (value1 === undefined) {
     return {
-      changes: '+',
+      changes: '-',
       value: value2,
     };
   }
   if (value2 === undefined) {
     return {
-      changes: '-',
+      changes: '+',
       value: value1,
     };
   }
@@ -40,11 +40,11 @@ const complexArrayToSimpleArray = (someArray) => {
 };
 
 const arrayToString = (someArray) => {
-  console.log('{');
+  let someString = '{';
   someArray.forEach((item) => {
-    someString = `  ${item.changes} ${item.name}: ${item.value} \n`;
+    someString += `\n\t${item.changes} ${item.name}: ${item.value}`;
   });
-  console.log('}');
+  someString += '\n}';
   return someString;
 };
 
@@ -61,5 +61,9 @@ const genDiff = (path1, path2) => {
   }, []);
   return arrayToString(complexArrayToSimpleArray(result));
 };
+
+//const file1 = '__tests__/__fixtures__/after.json';
+//const file2 = '__tests__/__fixtures__/before.json';
+//console.log(genDiff(file1, file2));
 
 export default genDiff;

@@ -6,13 +6,6 @@ test('gen-diff', () => {
 
   const actual = genDiff(file1, file2);
 
-  const expected = `{
-    - follow: false
-      host: hexlet.io
-    - proxy: 123.234.53.22
-    + timeout: 50
-    - timeout: 20
-    + verbose: true
-  }`;
+  const expected = '{\n\t- follow: false\n\t  host: hexlet.io\n\t- proxy: 123.234.53.22\n\t+ timeout: 20\n\t- timeout: 50\n\t+ verbose: true\n}';
   expect(actual).toBe(expected);
 });
