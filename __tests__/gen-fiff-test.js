@@ -8,8 +8,7 @@ describe('ProjestTests', () => {
     const file2 = path.join(__dirname, '__fixtures__', 'before.json');
     const actual = genDiff(file1, file2);
     const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected-json');    
-    const rawData = fs.readFileSync(expectedFixturePath, 'utf-8');
-    const expected = JSON.parse(rawData);
+    const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
 });
