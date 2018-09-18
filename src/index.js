@@ -58,7 +58,7 @@ const genDiff = (path1, path2) => {
     acc.push({ name: key, changes, value });
     return acc;
   }, []);
-  arrayToString(complexArrayToSimpleArray(result));
+  return arrayToString(complexArrayToSimpleArray(result));
 };
 
 export default genDiff;
