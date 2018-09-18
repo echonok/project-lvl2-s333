@@ -8,12 +8,10 @@ test('gen-diff', () => {
 
   const expected = `{
     {
-  	  "timeout": 20,
-  	  "verbose": true,
-  	  "host": "hexlet.io"
+      "timeout": 20,
+      "verbose": true,
+      "host": "hexlet.io"
     }
   }`;
-
   expect(actual).toBe(expected);
-
 });
