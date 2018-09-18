@@ -4,6 +4,4 @@ language: node_js
 node_js:
   - node
 
-script:
-  - make lint
-  - npm run test
+script: make lint test
