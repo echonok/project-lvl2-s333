@@ -1,7 +1,7 @@
 install:
 	npm install
 start:
-	npm run babel-node -- src/bin/brain-games.js
+	npm run babel-node -- src/bin/gen-diff.js
 publish:
 	npm publish
 test:
@@ -11,3 +11,5 @@ lint:
 build:
 	rm -rf dist
 	npm run build
+test-coverage:
+	npm test -- --coverage
