@@ -10,6 +10,7 @@ describe('ProjestTests', () => {
     const actual = genDiff(file1, file2);
 
     const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected-json');
+    console.log(__dirname);
     const rawData = fs.readFileSync(expectedFixturePath, 'utf-8');
     const expected = JSON.parse(rawData);
   
