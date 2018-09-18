@@ -7,7 +7,7 @@ const compareValues = (value1, value2) => {
       changes: ' ',
       value: value1,
     };
-  } 
+  }
   if (value1 === undefined) {
     return {
       changes: '+',
@@ -26,11 +26,11 @@ const compareValues = (value1, value2) => {
   };
 };
 
-const complexArrayToSimpleArray = someArray => {
+const complexArrayToSimpleArray = (someArray) => {
   const finalArray = someArray.reduce((acc, record) => {
     if (typeof record.value === 'object') {
-      acc.push({ name: record.name, changes: "+", value: record.value[0] });
-      acc.push({ name: record.name, changes: "-", value: record.value[1] });
+      acc.push({ name: record.name, changes: '+', value: record.value[0] });
+      acc.push({ name: record.name, changes: '-', value: record.value[1] });
     } else {
       acc.push(record);
     }
@@ -39,9 +39,9 @@ const complexArrayToSimpleArray = someArray => {
   return finalArray;
 };
 
-const arrayToString = someArray => {
+const arrayToString = (someArray) => {
   console.log('{');
-  someArray.forEach(function(item, i, arr) {
+  someArray.forEach(function (item) {
     console.log(`  ${item.changes} ${item.name}: ${item.value}`);
   });
   console.log('}');
@@ -58,7 +58,7 @@ const genDiff = (path1, path2) => {
     acc.push({ name: key, changes, value });
     return acc;
   }, []);
-  arrayToString(complexArrayToSimpleArray(result))
+  arrayToString(complexArrayToSimpleArray(result));
 };
 
 const fileBefore = '__tests__/__fixtures__/before.json';
