@@ -1,32 +1,5 @@
 {
-	{
-		"name": "follow", 
-		"changes": "-", 
-		"value": false 
-	},
-	{
-		"name": "host", 
-		"changes": " ", 
-		"value": "hexlet.io"
-	},
-	{ 
-		"name": "proxy",
-		"changes": "-",
-		"value": "123.234.53.22"
-	},
-	{
-		"name": "timeout",
-		"changes": "+",
-		"value": 20
-	},
-	{
-		"name": "timeout",
-		"changes": "-",
-		"value": 50
-	},
-	{
-		"name": "verbose",
-		"changes": "+",
-		"value": true
-	}
+  "name": "follow", 
+  "changes": "-", 
+  "value": false 
 }
