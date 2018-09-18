@@ -1,8 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 
-const genDiff = (path1, path2) => {
-  
+const genDiff = (path1, path2) => {  
   const data1 = JSON.parse(fs.readFileSync(path1, 'utf-8'));
   const data2 = JSON.parse(fs.readFileSync(path2, 'utf-8'));
   const keys1 = Object.keys(data1);
@@ -18,26 +17,26 @@ const genDiff = (path1, path2) => {
 
 const compareValues = (value1, value2) => {
   if (value1 === value2) {
-  	return {
-  		changes: ' ',
-  		value: value1,
-  	};
+    return {
+      changes: ' ',
+      value: value1,
+    ;
   } 
   if (value1 === undefined) {
-  	return {
-  		changes: '+',
-  		value: value2,
-  	};
+    return {
+      changes: '+',
+      value: value2,
+    };
   }
   if (value2 === undefined) {
-  	return {
-  		changes: '-',
-  		value: value1,
-  	};
+    return {
+      changes: '-',
+      value: value1,
+    };
   }
   return {
     changes: '-+',
-  	value: [value1, value2],
+    value: [value1, value2],
   };
 };
 
