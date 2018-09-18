@@ -1,5 +1,7 @@
 import mainFunc from '../src';
 
+console.log('test');
+
 test('gen-diff', () => {
   const config1 = '__tests__/__fixtures__/after.json';
   const config2 = '__tests__/__fixtures__/before.json';
