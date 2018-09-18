@@ -8,6 +8,6 @@ program
   .arguments('<firstArgument> <secondArgument>')
   .option('-f, --format [type]', 'Output format')
   .action(function (firstArgument, secondArgument) {
-  	console.log(`${firstArgument} ${secondArgument} test message from commander.js`)
+  	console.log(`${firstArgument} ${secondArgument} Test messages from commander.js`)
   })
   .parse(process.argv);
