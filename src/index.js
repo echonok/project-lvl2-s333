@@ -36,6 +36,7 @@ const complexArrayToSimpleArray = (someArray) => {
     }
     return acc;
   }, []);
+  console.log(finalArray);
   return finalArray;
 };
 
@@ -61,5 +62,9 @@ const genDiff = (path1, path2) => {
   }, []);
   return arrayToString(complexArrayToSimpleArray(result));
 };
+  
+const file1 = '__tests__/__fixtures__/after.json';
+const file2 = '__tests__/__fixtures__/before.json';
+genDiff(file1, file2);
 
 export default genDiff;
