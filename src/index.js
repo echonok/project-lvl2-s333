@@ -24,9 +24,7 @@ const genDiff = (path1, path2) => {
     }
     return _.flatten([...acc, `    ${key}: ${data1[key]}`]);
   }, []);
-  
   return `{\n${result.join('\n')}\n}`;
-  //return `{\n${result}}`;
 };
 
 export default genDiff;
