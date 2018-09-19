@@ -1,7 +1,7 @@
 install:
 	npm install
 start:
-	npm run babel-node -- src/bin/gen-diff.js
+	npx run babel-node -- src/bin/gen-diff.js
 publish:
 	npm publish
 test:
