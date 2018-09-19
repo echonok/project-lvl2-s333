@@ -25,9 +25,4 @@ const genDiff = (path1, path2) => {
   return `{\n${result}}`;
 };
 
-const file1 = 'src/before.json';
-const file2 = 'src/after.json';
-
-console.log(genDiff(file1, file2));
-
 export default genDiff;
