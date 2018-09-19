@@ -7,7 +7,7 @@ publish:
 test:
 	npm test
 lint:
-	npm run eslint -- src
+	npx eslint .
 build:
 	rm -rf dist
 	npm run build
