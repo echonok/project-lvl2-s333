@@ -1,7 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
-import parser from './parsers/parsers';
+import parser from './parsers';
 
 const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
