@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
+import { version, description } from '../../package.json';
 import program from 'commander';
 import genDiff from '..';
 
 program
-  .version('0.0.7')
-  .description('Compares two configuration files and shows a difference.')
+  .version(version)
+  .description(description )
   .arguments('<firstArgument> <secondArgument>')
   .option('-f, --format [type]', 'Output format')
-  .action((firstArgument, secondArgument) => genDiff(firstArgument, secondArgument))
+  .action((path1, path2) => console.log(genDiff(path1, path2)));
   .parse(process.argv);
