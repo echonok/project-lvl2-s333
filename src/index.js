@@ -14,18 +14,18 @@ const genDiff = (path1, path2) => {
   const allKeys = _.union(Object.keys(data1), Object.keys(data2));
   const result = allKeys.reduce((acc, key) => {
     if (!_.has(data2, key)) {
-      return `${acc}  - ${key}: ${data1[key]}`;
+      return _.flatten([...acc, `${acc}  - ${key}: ${data1[key]}`]);
     }
     if (!_.has(data1, key)) {
-      return `${acc}  + ${key}: ${data2[key]}`;
+      return _.flatten([...acc, `${acc}  + ${key}: ${data2[key]}`]);
     }
     if (data1[key] !== data2[key]) {
-      return [`${acc}  + ${key}: ${data2[key]}`, `  - ${key}: ${data1[key]}`];
+      return _.flatten([...acc, [`${acc}  + ${key}: ${data2[key]}`, `  - ${key}: ${data1[key]}`]]);
     }
-    return `${acc}    ${key}: ${data1[key]}`;
+    return _.flatten([...acc, `${acc}    ${key}: ${data1[key]}`]);
   }, []);
   
-  return `{\n${_.flatten(result).join('\n')}\n}`;
+  return `{\n${result.join('\n')}\n}`;
   //return `{\n${result}}`;
 };
 
