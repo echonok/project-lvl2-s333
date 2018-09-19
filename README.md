@@ -14,3 +14,5 @@ gen-diff -h
 ```
 This will install package globaly
 [![asciicast](https://asciinema.org/a/IRUsV8Ir1ZpPmGfaJMS1DI6xy.png)](https://asciinema.org/a/IRUsV8Ir1ZpPmGfaJMS1DI6xy)
+
+[![asciicast](https://asciinema.org/a/YUmfQErIb10kYcdBTCvLbMtKP.png)](https://asciinema.org/a/YUmfQErIb10kYcdBTCvLbMtKP)
