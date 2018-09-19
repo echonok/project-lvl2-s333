@@ -18,9 +18,8 @@ const genDiff = (path1, path2) => {
   const resultSecondStep = Object.keys(data2).reduce((acc, key) => {
     if (_.has(data1, key)) {
       return acc;
-    } else {
-      return `${acc}  + ${key}: ${data2[key]}\n`
     }
+    return `${acc}  + ${key}: ${data2[key]}\n`;
   }, resultFirstStep);
 
   return `{\n${resultSecondStep}}`;
