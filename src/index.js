@@ -1,9 +1,17 @@
 import fs from 'fs';
 import _ from 'lodash';
+import yaml from 'js-yaml';
+import path from 'path';
+import parser from './parsers/parser';
+
+const getExtension = (pathToFile) => {
+  return path.extname(`${pathToFile}`).replace(/\./g, '');
+};
 
 const genDiff = (path1, path2) => {
-  const data1 = JSON.parse(fs.readFileSync(path1, 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(path2, 'utf-8'));
+  const fileExt = getExtension(path1);
+  const data1 = parser(fileExt)(fs.readFileSync(path1, 'utf-8'));
+  const data2 = parser(fileExt)(fs.readFileSync(path2, 'utf-8'));
 
   const resultFirstStep = Object.keys(data1).reduce((acc, key) => {
     if (_.has(data2, key)) {
