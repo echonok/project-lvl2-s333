@@ -3,7 +3,7 @@ import _ from 'lodash';
 import path from 'path';
 import parser from './parsers/parser';
 
-const getExtension = pathToFile => return path.extname(`${pathToFile}`).replace(/\./g, '');
+const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
 const genDiff = (path1, path2) => {
   const fileExt = getExtension(path1);
