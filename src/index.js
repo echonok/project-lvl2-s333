@@ -1,10 +1,9 @@
 import fs from 'fs';
 import _ from 'lodash';
-import yaml from 'js-yaml';
 import path from 'path';
 import parser from './parsers/parser';
 
-const getExtension = (pathToFile) => {
+const getExtension = pathToFile => {
   return path.extname(`${pathToFile}`).replace(/\./g, '');
 };
 
