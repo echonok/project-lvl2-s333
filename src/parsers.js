@@ -1,10 +1,10 @@
-import inip from 'ini';
+import ini from 'ini';
 import yaml from 'js-yaml';
 
 const parsers = {
-  json: JSON.parse(objectForParcing),
-  yml: yaml.safeLoad(objectForParcing),
-  ini: inip.parse(objectForParcing,
+  json: JSON.parse,
+  yml: yaml.safeLoad,
+  ini: ini.parse,
 };
 
-export default extension => parsers[extension];
+export default (extension, objectForParcing) => parsers[extension](objectForParcing);
