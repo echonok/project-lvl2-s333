@@ -6,6 +6,9 @@ import parser from './parsers';
 const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
 const compareTwoData = (obj1, obj2) => {
+  if (obj1 === null || obj2 === null) {
+    return;
+  }  
   const keys = _.union(Object.keys(obj1), Object.keys(obj2));
 
   const compareValues = (value1, value2) => {
