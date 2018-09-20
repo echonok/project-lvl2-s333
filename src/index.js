@@ -8,7 +8,6 @@ const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, 
 const compareTwoData = (data1, data2, repeater = 1) => {
   const keys = _.union(Object.keys(data1), Object.keys(data2));
   const result = keys.reduce((acc, key) => {
-
     if (data1[key] instanceof Object && data2[key] instanceof Object) {
       if (!_.has(data2, key)) {
         return [...acc, `${'  '.repeat(repeater)}- ${key}: ${compareTwoData(data1[key], data2[key], repeater + 2)}`];
@@ -57,7 +56,7 @@ const genDiff = (path1, path2) => {
   const file2 = fs.readFileSync(path2, 'utf-8');
   const data1 = parser(fileExt, file1);
   const data2 = parser(fileExt, file2);
-  compareTwoData(data1, data2);
+  return compareTwoData(data1, data2);
 };
 
 export default genDiff;
