@@ -8,7 +8,8 @@ const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, 
 const compareTwoData = (obj1, obj2) => {
   if (obj1 === null || obj2 === null) {
     return;
-  }  
+  }
+
   const keys = _.union(Object.keys(obj1), Object.keys(obj2));
 
   const compareValues = (value1, value2) => {
@@ -70,11 +71,12 @@ const compareTwoData = (obj1, obj2) => {
     };
   };
 
-  return keys.reduce((acc, key) => {
+  const newArr = keys.reduce((acc, key) => {
     const { type, data } = compareValues(obj1[key], obj2[key]);
     acc.push({ name: key, type, data });
     return acc;
   }, []);
+  return newArr;
 };
 
 
