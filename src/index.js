@@ -5,15 +5,6 @@ import parser from './parsers';
 
 const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
-const compareTwoData = (obj1, obj2) => {
-  const keys = _.union(Object.keys(obj1), Object.keys(obj2));
-  return keys.reduce((acc, key) => {
-    const { type, data } = compareValues(obj1[key], obj2[key]);
-    acc.push({ name: key, type, data });
-    return acc;
-  }, []);
-};
-
 const compareValues = (value1, value2) => {
 
   if (typeof value1 === 'object' && typeof value2 === 'object') {
@@ -90,11 +81,10 @@ const stringify = (differences, repeater = 1) => {
           return [...acc, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data, repeater + 2)}`];        
         case 'deleted':
           return [...acc, `${'  '.repeat(repeater)}- ${key.name}: ${stringify(key.data, repeater + 2)}`];
-      default :
-        return acc;
+        default:
+          return acc;
       }
     }
-    
     switch (key.type) {
       case 'unchanged':
         return [...acc, `${'  '.repeat(repeater)}  ${key.name}: ${key.data}`];
@@ -104,13 +94,22 @@ const stringify = (differences, repeater = 1) => {
         return [...acc, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data}`];
       case 'deleted':
         return [...acc, `${'  '.repeat(repeater)}- ${key.name}: ${key.data}`];
-      default :
+      default:
         return acc;
     }
   }, []);
   const bracketSpace = repeater === 1 ? '' : ' ';
-  return `{\n${_.flatten(result).join('\n')}\n${bracketSpace.repeat((repeater * 2)-2)}}`;
-}
+  return `{\n${_.flatten(result).join('\n') }\n${bracketSpace.repeat((repeater * 2) - 2)}}`;
+};
+
+const compareTwoData = (obj1, obj2) => {
+  const keys = _.union(Object.keys(obj1), Object.keys(obj2));
+  return keys.reduce((acc, key) => {
+    const { type, data } = compareValues(obj1[key], obj2[key]);
+    acc.push({ name: key, type, data });
+    return acc;
+  }, []);
+};
 
 const genDiff = (path1, path2) => {
   const fileExt = getExtension(path1);
