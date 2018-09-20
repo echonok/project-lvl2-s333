@@ -30,3 +30,32 @@ describe('Simle Tests', () => {
     expect(actual).toEqual(expected);
   });
 });
+
+describe('Complex Tests', () => {
+  it('#gen-diff JSON', () => {
+    const path1 = path.join(__dirname, '__fixtures__', 'before_complex.json');
+    const path2 = path.join(__dirname, '__fixtures__', 'after_complex.json');
+    const actual = genDiff(path1, path2);
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_complex');
+    const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
+    expect(actual).toEqual(expected);
+  });
+
+  it('#gen-diff YAML', () => {
+    const path1 = path.join(__dirname, '__fixtures__', 'before_complex.yml');
+    const path2 = path.join(__dirname, '__fixtures__', 'after_complex.yml');
+    const actual = genDiff(path1, path2);
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_complex');
+    const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
+    expect(actual).toEqual(expected);
+  });
+
+  it('#gen-diff INI', () => {
+    const path1 = path.join(__dirname, '__fixtures__', 'before_complex.ini');
+    const path2 = path.join(__dirname, '__fixtures__', 'after_complex.ini');
+    const actual = genDiff(path1, path2);
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_complex');
+    const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
+    expect(actual).toEqual(expected);
+  });
+});
