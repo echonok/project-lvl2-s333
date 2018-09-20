@@ -121,12 +121,4 @@ const genDiff = (path1, path2) => {
   return (stringify(compareTwoData(data1, data2)));
 };
 
-const file1 = 'src/before_complex.yml';
-const file2 = 'src/after_complex.yml';
-genDiff(file1, file2);
-
-const file3 = 'src/before.yml';
-const file4 = 'src/after.yml';
-genDiff(file3, file4);
-
 export default genDiff;
