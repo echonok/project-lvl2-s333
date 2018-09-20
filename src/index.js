@@ -5,65 +5,75 @@ import parser from './parsers';
 
 const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
-const compareValues = (value1, value2) => {
+const compareTwoData = (obj1, obj2) => {
+  const keys = _.union(Object.keys(obj1), Object.keys(obj2));
 
-  if (typeof value1 === 'object' && typeof value2 === 'object') {
-    return {
-      type: 'unchanged',
-      data: compareTwoData(value1, value2),
-    };
-  }
+  const compareValues = (value1, value2) => {
+    if (typeof value1 === 'object' && typeof value2 === 'object') {
+      return {
+        type: 'unchanged',
+        data: compareTwoData(value1, value2),
+      };
+    }
 
-  if (value1 === value2) {
-    return {
-      type: 'unchanged',
-      data: value1,
-    };
-  }
+    if (value1 === value2) {
+      return {
+        type: 'unchanged',
+        data: value1,
+      };
+    }
 
-  if (typeof value1 === 'object' && value2 === undefined) {
-    return {
-      type: 'deleted',
-      data: compareTwoData(value1, value1),
-    };
-  }
-  if (value1 === undefined && typeof value2 === 'object') {
-    return {
-      type: 'created',
-      data: compareTwoData(value2, value2),
-    };
-  }
+    if (typeof value1 === 'object' && value2 === undefined) {
+      return {
+        type: 'deleted',
+        data: compareTwoData(value1, value1),
+      };
+    }
+    if (value1 === undefined && typeof value2 === 'object') {
+      return {
+        type: 'created',
+        data: compareTwoData(value2, value2),
+      };
+    }
 
-  if (typeof value1 === 'object' && value2 !== undefined) {
-    return {
-      type: 'changedOld',
-      data: [compareTwoData(value1, value1), value2],
-    };
-  }
-  if (value1 !== undefined && typeof value2 === 'object') {
-    return {
-      type: 'changedNew',
-      data: [value1, compareTwoData(value2, value2)],
-    };
-  }
+    if (typeof value1 === 'object' && value2 !== undefined) {
+      return {
+        type: 'changedOld',
+        data: [compareTwoData(value1, value1), value2],
+      };
+    }
+    if (value1 !== undefined && typeof value2 === 'object') {
+      return {
+        type: 'changedNew',
+        data: [value1, compareTwoData(value2, value2)],
+      };
+    }
 
-  if (value1 === undefined) {
+    if (value1 === undefined) {
+      return {
+        type: 'created',
+        data: value2,
+      };
+    }
+    if (value2 === undefined) {
+      return {
+        type: 'deleted',
+        data: value1,
+      };
+    }
     return {
-      type: 'created',
-      data: value2,
+      type: 'changed',
+      data: [value1, value2],
     };
-  }
-  if (value2 === undefined) {
-    return {
-      type: 'deleted',
-      data: value1,
-    };
-  }
-  return {
-    type: 'changed',
-    data: [value1, value2],
   };
+
+  return keys.reduce((acc, key) => {
+    const { type, data } = compareValues(obj1[key], obj2[key]);
+    acc.push({ name: key, type, data });
+    return acc;
+  }, []);
 };
+
 
 const stringify = (differences, repeater = 1) => {
   const result = differences.reduce((acc, key) => {
@@ -72,13 +82,13 @@ const stringify = (differences, repeater = 1) => {
         case 'unchanged':
           return [...acc, `${'  '.repeat(repeater)}  ${key.name}: ${stringify(key.data, repeater + 2)}`];
         case 'changed':
-          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];      
+          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];
         case 'changedOld':
-          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${stringify(key.data[0], repeater + 2)}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];      
+          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${stringify(key.data[0], repeater + 2)}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];
         case 'changedNew':
-          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data[1], repeater + 2)}`]];      
+          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data[1], repeater + 2)}`]];
         case 'created':
-          return [...acc, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data, repeater + 2)}`];        
+          return [...acc, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data, repeater + 2)}`];
         case 'deleted':
           return [...acc, `${'  '.repeat(repeater)}- ${key.name}: ${stringify(key.data, repeater + 2)}`];
         default:
@@ -99,16 +109,7 @@ const stringify = (differences, repeater = 1) => {
     }
   }, []);
   const bracketSpace = repeater === 1 ? '' : ' ';
-  return `{\n${_.flatten(result).join('\n') }\n${bracketSpace.repeat((repeater * 2) - 2)}}`;
-};
-
-const compareTwoData = (obj1, obj2) => {
-  const keys = _.union(Object.keys(obj1), Object.keys(obj2));
-  return keys.reduce((acc, key) => {
-    const { type, data } = compareValues(obj1[key], obj2[key]);
-    acc.push({ name: key, type, data });
-    return acc;
-  }, []);
+  return `{\n${_.flatten(result).join('\n')}\n${bracketSpace.repeat((repeater * 2) - 2)}}`;
 };
 
 const genDiff = (path1, path2) => {
