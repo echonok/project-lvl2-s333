@@ -82,11 +82,11 @@ const stringify = (differences, repeater = 1) => {
         case 'unchanged':
           return [...acc, `${'  '.repeat(repeater)}  ${key.name}: ${stringify(key.data, repeater + 2)}`];
         case 'changed':
-          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];
+          return [...acc, [`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];
         case 'changedOld':
-          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${stringify(key.data[0], repeater + 2)}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];
+          return [...acc, [`${'  '.repeat(repeater)}- ${key.name}: ${stringify(key.data[0], repeater + 2)}`, `${'  '.repeat(repeater)}+ ${key.name}: ${key.data[1]}`]];
         case 'changedNew':
-          return [...acc,[`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data[1], repeater + 2)}`]];
+          return [...acc, [`${'  '.repeat(repeater)}- ${key.name}: ${key.data[0]}`, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data[1], repeater + 2)}`]];
         case 'created':
           return [...acc, `${'  '.repeat(repeater)}+ ${key.name}: ${stringify(key.data, repeater + 2)}`];
         case 'deleted':
