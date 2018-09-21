@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const tabSymbol = '  ';
 
-const valueToString = (values, repeater) => `{\n${_.flatten(values).join('\n')}\n${tabSymbol.repeat((repeater - 1) * 2)}}`;
+const arrToString = (arr, repeater) => `{\n${_.flatten(arr).join('\n')}\n${tabSymbol.repeat((repeater - 1) * 2)}}`;
 
 const stringify = (value, repeater) => {
   if (!_.isObject(value)) {
@@ -13,7 +13,7 @@ const stringify = (value, repeater) => {
 
   const keys = _.keys(value).map(key => `${firstSpace}${key}: ${stringify(value[key], repeater + 1)}`);
 
-  return valueToString(keys, repeater);
+  return arrToString(keys, repeater);
 };
 
 const valueToString = (key, value, repeater) => `${key}: ${stringify(value, repeater + 1)}`;
@@ -43,7 +43,7 @@ const renderDifferences = (differences, repeater = 1) => {
     }
   });
 
-  return valueToString(arr, repeater);
+  return arrToString(arr, repeater);
 };
 
 export default renderDifferences;
