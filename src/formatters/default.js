@@ -38,8 +38,8 @@ const renderDifferences = (differences, repeater = 1) => {
         return `${firstSpace}- ${valueToString(name, value1, repeater + 1)}`;
       case 'changed':
         return [
-          `${firstSpace}+ ${valueToString(name, value2, repeater + 1)}`,
           `${firstSpace}- ${valueToString(name, value1, repeater + 1)}`,
+          `${firstSpace}+ ${valueToString(name, value2, repeater + 1)}`,
         ];
       default:
         return;
