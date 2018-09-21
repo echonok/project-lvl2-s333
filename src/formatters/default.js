@@ -16,7 +16,7 @@ const stringify = (value, repeater) => {
 
 const valueToString = (key, value, repeater) => `${key}: ${stringify(value, repeater + 1)}`;
 
-const renderAstAsTree = (differences, repeater = 1) => {
+const renderDifferences = (differences, repeater = 1) => {
   const firstSpace = tabSymbol.repeat(repeater * 2 - 1);
   const indentForUnchanged = tabSymbol.repeat(repeater * 2);
 
@@ -27,7 +27,7 @@ const renderAstAsTree = (differences, repeater = 1) => {
 
     switch (type) {
       case 'object':
-        return `${indentForUnchanged}${name}: ${renderAstAsTree(children, repeater + 1)}`;
+        return `${indentForUnchanged}${name}: ${renderDifferences(children, repeater + 1)}`;
       case 'deleted':
         return `${firstSpace}- ${valueToString(name, value1, repeater)}`;
       case 'added':
@@ -44,4 +44,4 @@ const renderAstAsTree = (differences, repeater = 1) => {
   return `{\n${_.flatten(arr).join('\n')}\n${tabSymbol.repeat((repeater - 1) * 2)}}`;
 };
 
-export default renderAstAsTree;
+export default renderDifferences;
