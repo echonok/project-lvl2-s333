@@ -6,31 +6,28 @@ import formatters from './formatters';
 
 const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
-const compareTwoData = (data1, data2) => { return _.union(_.keys(data1), _.keys(data2)).map((key) => {
-    const value1 = data1[key];
-    const value2 = data2[key];
+const getAllKeys = (data1, data2) => _.union(_.keys(data1), _.keys(data2));
 
-    if (!_.has(data2, key)) {
-      return { name: key, type: 'deleted', value1 };
-    }
+const compareTwoData = (data1, data2) => getAllKeys.map((key) => {
+  const value1 = data1[key];
+  const value2 = data2[key];
 
-    if (!_.has(data1, key)) {
-      return { name: key, type: 'added', value2 };
-    }
-
-    if (_.isObject(value1) && _.isObject(value2)) {
-      return { name: key, type: 'object', children: compareTwoData(value1, value2) };
-    }
-
-    if (value1 === value2) {
-      return { name: key, type: 'unchanged', value1 };
-    }
-
-    return {
-      name: key, type: 'changed', value1, value2,
-    };
-  });
-};
+  if (!_.has(data2, key)) {
+    return { name: key, type: 'deleted', value1 };
+  }
+  if (!_.has(data1, key)) {
+    return { name: key, type: 'added', value2 };
+  }
+  if (_.isObject(value1) && _.isObject(value2)) {
+    return { name: key, type: 'object', children: compareTwoData(value1, value2) };
+  }
+  if (value1 === value2) {
+    return { name: key, type: 'unchanged', value1 };
+  }
+  return {
+    name: key, type: 'changed', value1, value2,
+  };
+});
 
 const genDiff = (path1, path2, keys) => {
   const fileExt = getExtension(path1);
