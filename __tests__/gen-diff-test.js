@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import genDiff from '../src';
 
-describe('Simle Tests', () => {
-  it('#gen-diff JSON', () => {
+describe('Simle Tests -> structure', () => {
+  it('#gen-diff JSON -> structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.json');
     const path2 = path.join(__dirname, '__fixtures__', 'after.json');
     const actual = genDiff(path1, path2, { format: 'default' });
@@ -12,7 +12,7 @@ describe('Simle Tests', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff YAML', () => {
+  it('#gen-diff YAML -> structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.yml');
     const path2 = path.join(__dirname, '__fixtures__', 'after.yml');
     const actual = genDiff(path1, path2, { format: 'default' });
@@ -21,7 +21,7 @@ describe('Simle Tests', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff INI', () => {
+  it('#gen-diff INI -> structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.ini');
     const path2 = path.join(__dirname, '__fixtures__', 'after.ini');
     const actual = genDiff(path1, path2, { format: 'default' });
@@ -31,8 +31,8 @@ describe('Simle Tests', () => {
   });
 });
 
-describe('Complex Tests', () => {
-  it('#gen-diff JSON', () => {
+describe('Complex Tests -> structure', () => {
+  it('#gen-diff JSON -> structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.json');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.json');
     const actual = genDiff(path1, path2, { format: 'default' });
@@ -41,7 +41,7 @@ describe('Complex Tests', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff YAML', () => {
+  it('#gen-diff YAML -> structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.yml');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.yml');
     const actual = genDiff(path1, path2, { format: 'default' });
@@ -50,7 +50,7 @@ describe('Complex Tests', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff INI', () => {
+  it('#gen-diff INI -> structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.ini');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.ini');
     const actual = genDiff(path1, path2, { format: 'default' });
@@ -60,8 +60,8 @@ describe('Complex Tests', () => {
   });
 });
 
-describe('Simle Tests - plain', () => {
-  it('#gen-diff JSON - plain', () => {
+describe('Simle Tests -> plain structure', () => {
+  it('#gen-diff JSON -> plain structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.json');
     const path2 = path.join(__dirname, '__fixtures__', 'after.json');
     const actual = genDiff(path1, path2, { format: 'plain' });
@@ -70,7 +70,7 @@ describe('Simle Tests - plain', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff YAML - plain', () => {
+  it('#gen-diff YAML -> plain structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.yml');
     const path2 = path.join(__dirname, '__fixtures__', 'after.yml');
     const actual = genDiff(path1, path2, { format: 'plain' });
@@ -79,7 +79,7 @@ describe('Simle Tests - plain', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff INI - plain', () => {
+  it('#gen-diff INI -> plain structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.ini');
     const path2 = path.join(__dirname, '__fixtures__', 'after.ini');
     const actual = genDiff(path1, path2, { format: 'plain' });
@@ -89,8 +89,8 @@ describe('Simle Tests - plain', () => {
   });
 });
 
-describe('Complex Tests - plain', () => {
-  it('#gen-diff JSON - plain', () => {
+describe('Complex Tests -> plain structure', () => {
+  it('#gen-diff JSON -> plain structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.json');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.json');
     const actual = genDiff(path1, path2, { format: 'plain' });
@@ -99,7 +99,7 @@ describe('Complex Tests - plain', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff YAML - plain', () => {
+  it('#gen-diff YAML -> plain structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.yml');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.yml');
     const actual = genDiff(path1, path2, { format: 'plain' });
@@ -108,7 +108,7 @@ describe('Complex Tests - plain', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff INI - plain', () => {
+  it('#gen-diff INI -> plain structure', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.ini');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.ini');
     const actual = genDiff(path1, path2, { format: 'plain' });
@@ -118,8 +118,8 @@ describe('Complex Tests - plain', () => {
   });
 });
 
-describe('Simle Tests - JSON', () => {
-  it('#gen-diff JSON - JSON', () => {
+describe('Simle Tests -> JSON', () => {
+  it('#gen-diff JSON -> JSON', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.json');
     const path2 = path.join(__dirname, '__fixtures__', 'after.json');
     const actual = genDiff(path1, path2, { format: 'json' });
@@ -128,7 +128,7 @@ describe('Simle Tests - JSON', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff YAML - JSON', () => {
+  it('#gen-diff YAML -> JSON', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.yml');
     const path2 = path.join(__dirname, '__fixtures__', 'after.yml');
     const actual = genDiff(path1, path2, { format: 'json' });
@@ -137,7 +137,7 @@ describe('Simle Tests - JSON', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff INI - JSON', () => {
+  it('#gen-diff INI -> JSON', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before.ini');
     const path2 = path.join(__dirname, '__fixtures__', 'after.ini');
     const actual = genDiff(path1, path2, { format: 'json' });
@@ -147,8 +147,8 @@ describe('Simle Tests - JSON', () => {
   });
 });
 
-describe('Complex Tests - JSON', () => {
-  it('#gen-diff JSON - JSON', () => {
+describe('Complex Tests -> JSON', () => {
+  it('#gen-diff JSON -> JSON', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.json');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.json');
     const actual = genDiff(path1, path2, { format: 'json' });
@@ -157,7 +157,7 @@ describe('Complex Tests - JSON', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff YAML - JSON', () => {
+  it('#gen-diff YAML -> JSON', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.yml');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.yml');
     const actual = genDiff(path1, path2, { format: 'json' });
@@ -166,7 +166,7 @@ describe('Complex Tests - JSON', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('#gen-diff INI - JSON', () => {
+  it('#gen-diff INI -> JSON', () => {
     const path1 = path.join(__dirname, '__fixtures__', 'before_complex.ini');
     const path2 = path.join(__dirname, '__fixtures__', 'after_complex.ini');
     const actual = genDiff(path1, path2, { format: 'json' });
