@@ -35,10 +35,7 @@ const renderAstAsTree = (differences, repeater = 1) => {
       case 'unchanged':
         return `${indentForUnchanged}${keyValueToString(name, value1, repeater)}`;
       case 'changed':
-        return [          
-          `${firstSpace}- ${keyValueToString(name, value1, repeater)}`,
-          `${firstSpace}+ ${keyValueToString(name, value2, repeater)}`,
-        ];
+        return [`${firstSpace}- ${keyValueToString(name, value1, repeater)}`, `${firstSpace}+ ${keyValueToString(name, value2, repeater)}`];
       default:
         throw new Error();
     }
