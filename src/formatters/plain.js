@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
 const renderDifferences = (differences, parentName = '') => {
-
   const arr = differences.map(key => {
-
-    const { name, type, value1, value2, children } = key;
+    const {
+      name, type, value1, value2, children
+    } = key;
 
     switch (type) {
       case 'object':
@@ -16,7 +16,7 @@ const renderDifferences = (differences, parentName = '') => {
       case 'changed':
         return `Property ${parentName}${name} was updated. From ${value1} to ${value2}`;
       default:
-        return;
+        throw new Error();
     }
   });
   return `${_.flatten(_.filter(arr, function (sub) { return sub; })).join('\n')}`;
