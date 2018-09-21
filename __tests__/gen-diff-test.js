@@ -22,7 +22,7 @@ describe('Simle & Complex Tests', () => {
   const path2iniComplex = path.join(__dirname, '__fixtures__', 'after_complex.ini');
 
   it('#gen-diff JSON -> structure', () => {
-    const actual = genDiff(path1json, path2json);
+    const actual = genDiff(path1json, path2json, { format: 'structure' });
     const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
