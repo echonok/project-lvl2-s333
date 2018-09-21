@@ -2,47 +2,49 @@ import _ from 'lodash';
 
 const tabSymbol = '  ';
 
-const stringify = (value, repeater = 1) => {
+const stringify = (value, repeater) => {
   if (!_.isObject(value)) {
     return `${value}`;
   }
 
-  const firstSpace = tabSymbol.repeat(repeater + 1);
+  const firstSpace = tabSymbol.repeat(repeater * 2);
 
-  const keys = Object.keys(value).map(key => `${firstSpace}${key}: ${stringify(value[key], repeater + 2)}`);
+  const keys = _.keys(value).map(key => `${firstSpace}${key}: ${stringify(value[key], repeater + 1)}`);
 
-  return `{\n${_.flatten(keys).join('\n')}\n${tabSymbol.repeat(repeater)}}`;
+  return `{\n${_.flatten(keys).join('\n')}\n${tabSymbol.repeat((repeater - 1) * 2)}}`;
 };
 
-const valueToString = (key, value, tabsCount) => { `${key}: ${stringify(value, tabsCount)}`; };
+const keyValueToString = (key, value, repeater) => `${key}: ${stringify(value, repeater + 1)}`;
 
-const renderDifferences = (differences, repeater = 1) => {
-  const firstSpace = tabSymbol.repeat(repeater);
+const renderAstAsTree = (differences, repeater = 1) => {
+  const firstSpace = tabSymbol.repeat(repeater * 2 - 1);
+  const indentForUnchanged = tabSymbol.repeat(repeater * 2);
+
   const arr = differences.map((element) => {
-      const {
+    const {
       name, type, value1, value2, children,
     } = element;
 
     switch (type) {
       case 'object':
-        return `${firstSpace}  ${name}: ${renderDifferences(children, repeater + 2)}`;
-      case 'unchanged':
-        return `${firstSpace}  ${valueToString(name, value1, repeater + 2)}`;
-      case 'added':
-        return `${firstSpace}+ ${valueToString(name, value2, repeater + 1)}`;
+        return `${indentForUnchanged}${name}: ${renderAstAsTree(children, repeater + 1)}`;
       case 'deleted':
-        return `${firstSpace}- ${valueToString(name, value1, repeater + 1)}`;
+        return `${firstSpace}- ${keyValueToString(name, value1, repeater)}`;
+      case 'added':
+        return `${firstSpace}+ ${keyValueToString(name, value2, repeater)}`;
+      case 'unchanged':
+        return `${indentForUnchanged}${keyValueToString(name, value1, repeater)}`;
       case 'changed':
-        return [
-          `${firstSpace}- ${valueToString(name, value1, repeater + 1)}`,
-          `${firstSpace}+ ${valueToString(name, value2, repeater + 1)}`,
+        return [          
+          `${firstSpace}- ${keyValueToString(name, value1, repeater)}`,
+          `${firstSpace}+ ${keyValueToString(name, value2, repeater)}`,
         ];
       default:
         throw new Error();
     }
   });
 
-  return `{\n${_.flatten(arr).join('\n')}\n${tabSymbol.repeat(repeater - 1)}}`;
+  return `{\n${_.flatten(arr).join('\n')}\n${tabSymbol.repeat((repeater - 1) * 2)}}`;
 };
 
-export default renderDifferences;
+export default renderAstAsTree;
