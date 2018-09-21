@@ -1,6 +1,7 @@
 # Generator of differences
 [![Code Climate](https://codeclimate.com/github/echonok/project-lvl2-s333/badges/gpa.svg)](https://codeclimate.com/github/echonok/project-lvl2-s333)
 [![Issue Count](https://codeclimate.com/github/echonok/project-lvl2-s333/badges/issue_count.svg)](https://codeclimate.com/github/echonok/project-lvl2-s333)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5cab81b160e13f8c141d/test_coverage)](https://codeclimate.com/github/echonok/project-lvl2-s333/test_coverage)
 [![Build Status](https://travis-ci.org/echonok/project-lvl2-s333.svg?branch=master)](https://travis-ci.org/echonok/project-lvl2-s333)
 
 ### Discription
