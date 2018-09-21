@@ -6,8 +6,7 @@ import formatters from './formatters';
 
 const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, '');
 
-const compareTwoData = (data1, data2) => {
-  return _.union(_.keys(data1), _.keys(data2)).map((key) => {
+const compareTwoData = (data1, data2) => { return _.union(_.keys(data1), _.keys(data2)).map((key) => {
     const value1 = data1[key];
     const value2 = data2[key];
 
@@ -30,7 +29,7 @@ const compareTwoData = (data1, data2) => {
     return {
       name: key, type: 'changed', value1, value2,
     };
-  })
+  });
 };
 
 const genDiff = (path1, path2, keys) => {
