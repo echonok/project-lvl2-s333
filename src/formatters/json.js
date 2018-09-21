@@ -1,4 +1,4 @@
-const renderDifferences = (differences) => {
+const renderDifferences = differences => {
   return JSON.stringify(differences);
 };
 
