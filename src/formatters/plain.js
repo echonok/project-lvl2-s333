@@ -18,10 +18,8 @@ const renderDifferences = (differences, parentName = '') => {
       default:
         return;
     }
-    
   });
-
-  return `${_.flatten(_.filter(arr, function(sub) { return sub; })).join('\n')}`;
+  return `${_.flatten(_.filter(arr, function (sub) { return sub; })).join('\n')}`;
 };
 
 export default renderDifferences;
