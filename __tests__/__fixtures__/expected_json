@@ -7,8 +7,8 @@
   {
     "name": "timeout",
     "type": "changed",
-    "value1": 50,
-    "value2": 20
+    "value1": "50",
+    "value2": "20"
   },
   {
     "name": "proxy",
