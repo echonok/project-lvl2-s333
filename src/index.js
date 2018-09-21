@@ -8,7 +8,7 @@ const getExtension = pathToFile => path.extname(`${pathToFile}`).replace(/\./g, 
 
 const getAllKeys = (data1, data2) => _.union(_.keys(data1), _.keys(data2));
 
-const compareTwoData = (data1, data2) => getAllKeys.map((key) => {
+const compareTwoData = (data1, data2) => getAllKeys(data1, data2).map((key) => {
   const value1 = data1[key];
   const value2 = data2[key];
 

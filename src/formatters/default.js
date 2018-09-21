@@ -20,7 +20,13 @@ const renderDifferences = (differences, repeater = 1) => {
 
   const arr = differences.map((element) => {
     
-    const { name, type, value1, value2, children } = element;
+    const {
+      name, 
+      type, 
+      value1, 
+      value2, 
+      children
+    } = element;
 
     switch (type) {
       case 'object':
@@ -37,7 +43,7 @@ const renderDifferences = (differences, repeater = 1) => {
           `${firstSpace}+ ${valueToString(name, value2, repeater + 1)}`,
         ];
       default:
-        return;
+        throw new Error();
     }
   });
 
