@@ -21,7 +21,7 @@ const renderDifferences = (differences, parentName = '') => {
         throw new Error();
     }
   });
-  return `${_.flatten(_.filter(arr, sub => { return sub; })).join('\n')}`;
+  return `${_.flatten(_.filter(arr, sub => sub)).join('\n')}`;
 };
 
 export default renderDifferences;
