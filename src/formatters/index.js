@@ -1,9 +1,9 @@
-import defaultFormatter from './default';
+import structureFormatter from './structure';
 import plainFormatter from './plain';
 import jsonFormatter from './json';
 
 const formatters = {
-  default: defaultFormatter,
+  structure: structureFormatter,
   plain: plainFormatter,
   json: jsonFormatter,
 };
