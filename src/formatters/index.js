@@ -8,7 +8,7 @@ const formatters = {
   json: jsonFormatter,
 };
 
-export default (format = { format: 'structure' }) => {
+export default (format) => {
   const formatter = formatters[format];
   if (formatter) {
     return formatter;
