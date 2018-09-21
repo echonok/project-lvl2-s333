@@ -1,3 +1,3 @@
-const renderDifferences = differences => JSON.stringify(differences);
+const renderDifferences = differences => JSON.stringify(differences, null, '  ');
 
 export default renderDifferences;
