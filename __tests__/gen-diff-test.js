@@ -22,22 +22,22 @@ describe('Simle & Complex Tests', () => {
   const path2iniComplex = path.join(__dirname, '__fixtures__', 'after_complex.ini');
 
   it('#gen-diff JSON -> structure', () => {
-    const actual = genDiff(path1json, path2json, { format: 'structure' });
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_default');
+    const actual = genDiff(path1json, path2json);
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
 
   it('#gen-diff YAML -> structure', () => {
     const actual = genDiff(path1yml, path2yml, { format: 'structure' });
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_default');
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
 
   it('#gen-diff INI -> structure', () => {
     const actual = genDiff(path1ini, path2ini, { format: 'structure' });
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_default');
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
@@ -86,21 +86,21 @@ describe('Simle & Complex Tests', () => {
 
   it('#gen-diff JSON -> structure', () => {
     const actual = genDiff(path1jsonComplex, path2jsonComplex, { format: 'structure' });
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_default_complex');
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure_complex');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
 
   it('#gen-diff YAML -> structure', () => {
     const actual = genDiff(path1ymlComplex, path2ymlComplex, { format: 'structure' });
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_default_complex');
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure_complex');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
 
   it('#gen-diff INI -> structure', () => {
     const actual = genDiff(path1iniComplex, path2iniComplex, { format: 'structure' });
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_default_complex');
+    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected_structure_complex');
     const expected = fs.readFileSync(expectedFixturePath, 'utf-8');
     expect(actual).toEqual(expected);
   });
