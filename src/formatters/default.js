@@ -28,10 +28,10 @@ const renderDifferences = (differences, repeater = 1) => {
     switch (type) {
       case 'object':
         return `${indentForUnchanged}${name}: ${renderDifferences(children, repeater + 1)}`;
-      case 'deleted':
-        return `${firstSpace}- ${valueToString(name, value1, repeater)}`;
       case 'added':
         return `${firstSpace}+ ${valueToString(name, value2, repeater)}`;
+      case 'deleted':
+        return `${firstSpace}- ${valueToString(name, value1, repeater)}`;
       case 'unchanged':
         return `${indentForUnchanged}${valueToString(name, value1, repeater)}`;
       case 'changed':

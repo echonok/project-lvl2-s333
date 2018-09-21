@@ -12,14 +12,14 @@ const compareTwoData = (data1, data2) => getAllKeys(data1, data2).map((key) => {
   const value1 = data1[key];
   const value2 = data2[key];
 
-  if (!_.has(data2, key)) {
-    return { name: key, type: 'deleted', value1 };
+  if (_.isObject(value1) && _.isObject(value2)) {
+    return { name: key, type: 'object', children: compareTwoData(value1, value2) };
   }
   if (!_.has(data1, key)) {
     return { name: key, type: 'added', value2 };
   }
-  if (_.isObject(value1) && _.isObject(value2)) {
-    return { name: key, type: 'object', children: compareTwoData(value1, value2) };
+  if (!_.has(data2, key)) {
+    return { name: key, type: 'deleted', value1 };
   }
   if (value1 === value2) {
     return { name: key, type: 'unchanged', value1 };
