@@ -2,8 +2,6 @@ import _ from 'lodash';
 
 const tabSymbol = '  ';
 
-const valueToString = (key, value, tabsCount) => { `${key}: ${stringify(value, tabsCount) }`; };
-
 const stringify = (value, repeater = 1) => {
   if (!_.isObject(value)) {
     return `${value}`;
@@ -16,9 +14,10 @@ const stringify = (value, repeater = 1) => {
   return `{\n${_.flatten(keys).join('\n')}\n${tabSymbol.repeat(repeater)}}`;
 };
 
+const valueToString = (key, value, tabsCount) => { `${key}: ${stringify(value, tabsCount) }`; };
+
 const renderDifferences = (differences, repeater = 1) => {
   const firstSpace = tabSymbol.repeat(repeater);
-
   const arr = differences.map((element) => {    
     const {
       name, type, value1, value2, children,
