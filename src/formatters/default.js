@@ -14,7 +14,7 @@ const stringify = (value, repeater) => {
   return `{\n${_.flatten(keys).join('\n')}\n${tabSymbol.repeat((repeater - 1) * 2)}}`;
 };
 
-const keyValueToString = (key, value, repeater) => `${key}: ${stringify(value, repeater + 1)}`;
+const valueToString = (key, value, repeater) => `${key}: ${stringify(value, repeater + 1)}`;
 
 const renderAstAsTree = (differences, repeater = 1) => {
   const firstSpace = tabSymbol.repeat(repeater * 2 - 1);
@@ -29,13 +29,13 @@ const renderAstAsTree = (differences, repeater = 1) => {
       case 'object':
         return `${indentForUnchanged}${name}: ${renderAstAsTree(children, repeater + 1)}`;
       case 'deleted':
-        return `${firstSpace}- ${keyValueToString(name, value1, repeater)}`;
+        return `${firstSpace}- ${valueToString(name, value1, repeater)}`;
       case 'added':
-        return `${firstSpace}+ ${keyValueToString(name, value2, repeater)}`;
+        return `${firstSpace}+ ${valueToString(name, value2, repeater)}`;
       case 'unchanged':
-        return `${indentForUnchanged}${keyValueToString(name, value1, repeater)}`;
+        return `${indentForUnchanged}${valueToString(name, value1, repeater)}`;
       case 'changed':
-        return [`${firstSpace}- ${keyValueToString(name, value1, repeater)}`, `${firstSpace}+ ${keyValueToString(name, value2, repeater)}`];
+        return [`${firstSpace}- ${valueToString(name, value1, repeater)}`, `${firstSpace}+ ${valueToString(name, value2, repeater)}`];
       default:
         throw new Error();
     }
