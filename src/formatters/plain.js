@@ -13,6 +13,8 @@ const renderDifferences = (differences, parentName = '') => {
         return `Property ${parentName}${name} was added with value: ${value2}`;
       case 'deleted':
         return `Property ${parentName}${name} was removed`;
+      case 'unchanged':
+        return null;
       case 'changed':
         return `Property ${parentName}${name} was updated. From ${value1} to ${value2}`;
       default:
