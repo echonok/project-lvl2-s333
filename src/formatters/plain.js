@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
 const renderDifferences = (differences, parentName = '') => {
-  const arr = differences.map(key => {
+  const arr = differences.map((key) => {
     const {
-      name, type, value1, value2, children
+      name, type, value1, value2, children,
     } = key;
 
     switch (type) {
@@ -21,7 +21,7 @@ const renderDifferences = (differences, parentName = '') => {
         throw new Error();
     }
   });
-  return `${_.flatten(_.filter(arr, function (sub) { return sub; })).join('\n')}`;
+  return `${_.flatten(_.filter(arr, (sub) => { return sub; })).join('\n')}`;
 };
 
 export default renderDifferences;
