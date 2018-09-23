@@ -13,5 +13,6 @@ export default (format = 'structure') => {
   if (formatter) {
     return formatter;
   }
-  return formatters.structure;
+
+  throw new Error(`There is no formatter for this '${format}' format`);
 };
