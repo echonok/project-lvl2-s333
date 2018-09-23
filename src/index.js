@@ -29,14 +29,14 @@ const compareTwoData = (data1, data2) => getAllKeys(data1, data2).map((key) => {
   };
 });
 
-const genDiff = (path1, path2, keys) => {
+const genDiff = (path1, path2, format) => {
   const fileExt = getExtension(path1);
   const file1 = fs.readFileSync(path1, 'utf-8');
   const file2 = fs.readFileSync(path2, 'utf-8');
   const data1 = parser(fileExt, file1);
   const data2 = parser(fileExt, file2);
   const differences = compareTwoData(data1, data2);
-  const finalRender = formatters(keys.format)(differences);
+  const finalRender = formatters(format)(differences);
   return finalRender;
 };
 
