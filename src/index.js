@@ -29,7 +29,7 @@ const compareTwoData = (data1, data2) => getAllKeys(data1, data2).map((key) => {
   };
 });
 
-const genDiff = (path1, path2, keys = { format: 'structure' }) => {
+const genDiff = (path1, path2, keys = 'structure') => {
   const fileExt = getExtension(path1);
   const file1 = fs.readFileSync(path1, 'utf-8');
   const file2 = fs.readFileSync(path2, 'utf-8');
