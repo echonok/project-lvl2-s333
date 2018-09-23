@@ -8,11 +8,10 @@ const formatters = {
   json: jsonFormatter,
 };
 
-export default (format) => {
+export default (format = 'structure') => {
   const formatter = formatters[format];
   if (formatter) {
     return formatter;
   }
-  return formatter.structure;
-  //throw new Error(`There is no formatter for this '${format}' format`);
+  throw new Error(`There is no formatter for this '${format}' format`);
 };
